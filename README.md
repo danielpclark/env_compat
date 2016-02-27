@@ -29,7 +29,8 @@ EnvCompat.decode "HTTPS_CFF_GITHUB_D_COM_F_COMPANY_F_PRIVATE_M_REPO_D_GIT"
 ```
 
 To define you own custom special character mappings feel free to overwrite
-the EnvCompat module instance method of `:mapping`.
+the EnvCompat module instance method of `:mapping`.  **NOTE:** When changing
+mapping the underscore symbol must be mapped.
 
 ```ruby
 def EnvCompat.mapping
