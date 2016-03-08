@@ -20,7 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
+Three methods are provided `:auto`, `:encode`, and `:decode`.  Provide a tag for
+`:auto` and it will use that to determine whether or not to encode or decode.  You
+can see this example tag usage in the Bundler library.
+
 ```ruby
+
+EnvCompat.auto :bundle, "https://github.com/company/private-repo.git"
+# => "BUNDLE_HTTPS_CFF_GITHUB_D_COM_F_COMPANY_F_PRIVATE_M_REPO_D_GIT" 
+
+EnvCompat.auto :bundle, "BUNDLE_HTTPS_CFF_GITHUB_D_COM_F_COMPANY_F_PRIVATE_M_REPO_D_GIT" 
+# => "HTTPS://GITHUB.COM/COMPANY/PRIVATE-REPO.GIT"
+
 EnvCompat.encode "https://github.com/company/private-repo.git"
 # => "HTTPS_CFF_GITHUB_D_COM_F_COMPANY_F_PRIVATE_M_REPO_D_GIT" 
 
@@ -28,7 +39,7 @@ EnvCompat.decode "HTTPS_CFF_GITHUB_D_COM_F_COMPANY_F_PRIVATE_M_REPO_D_GIT"
 # => HTTPS://GITHUB.COM/COMPANY/PRIVATE-REPO.GIT
 ```
 
-To define you own custom special character mappings feel free to overwrite
+To define your own custom special character mappings feel free to overwrite
 the EnvCompat module instance method of `:mapping`.  **NOTE:** When changing
 mapping the underscore symbol must be mapped.
 

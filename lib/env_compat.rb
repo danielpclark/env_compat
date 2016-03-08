@@ -2,6 +2,14 @@ require "env_compat/version"
 
 module EnvCompat
   class << self
+    def auto tag, str
+      if str[/#{tag}_/i]
+        decode str[tag.length.+(1)..-1]
+      else
+        "#{tag.upcase}_#{encode str}"
+      end
+    end
+
     def encode str
       builder = ''
       _ = CodeBlock.new
